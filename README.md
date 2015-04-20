@@ -9,4 +9,5 @@ Python API wrapper for the DAQSS API
     
 ## Basic Use
 
-    >>> from 
+    >>> from daqss import Daqss
+    >>> d = Daqss(API_KEY, API_PSWD)
