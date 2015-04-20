@@ -5,7 +5,7 @@
 	April 2015
 
 '''
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 import os
 
@@ -23,6 +23,6 @@ setup(
 	author_email = 'david@davidhhagan.com',
 	url = 'https://github.com/dhhagan/python-daqss',
 	license = 'MIT',
-	packages = 'daqss-api',
+	packages = ['daqss-api'],
 	zip_safe = False,
 	install_requires = ['requests'])
