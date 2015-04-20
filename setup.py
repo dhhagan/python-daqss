@@ -5,7 +5,7 @@
 	April 2015
 
 '''
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 import os
 
@@ -15,7 +15,7 @@ except ImportError:
 	from distutil.core import setup
 
 setup(
-	name = 'daqss-api',
+	name = 'daqss',
 	version = __version__,
 	description = 'Python wrapper for the DAQSS API',
 	keywords = ['DAQSS', 'MIT', 'Air Quality'],
