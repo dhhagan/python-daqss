@@ -100,7 +100,7 @@ class Daqss(object):
         else:
             raise DaqssException(r.status_code)
             
-        return r.json()
+        return r.status_code, r.json()
     
     def node(self, id = None):
         ''' Gets data for an individual node set by id '''
@@ -109,29 +109,29 @@ class Daqss(object):
             
         r = self._getcall('ind_node', id = id)
             
-        return r.json()
+        return r.status_code, r.json()
     
     def addNode(self, data):
         ''' Adds a node to the network '''
         r = self._postcall('nodes', data = json.dumps(data))
         
-        return r.json()
+        return r.status_code, r.json()
     
     def editNode(self, id, data):
         r = self._putcall('ind_node', id = id, data = json.dumps(data))
         
-        return r.json()
+        return r.status_code, r.json()
     
     def dropNode(self, id):
         r = self._deletecall('ind_node', id = id)
         
-        return r.json()
+        return r.status_code, r.json()
     
     def sensors(self):
         ''' Grabs all alphasense sensors '''
         r = self._getcall('as')
         
-        return r.json()
+        return r.status_code, r.json()
     
     def sensor(self, id = None):
         ''' Get individual sensor '''
@@ -140,7 +140,7 @@ class Daqss(object):
             
         r = self._getcall('ind_as', id = id)
         
-        return r.json()
+        return r.status_code, r.json()
     
     def sensorData(self, id = None, page = 1):
         ''' Gets the data for an individual Alphasense sensor '''
@@ -149,36 +149,36 @@ class Daqss(object):
             
         r = self._getcall('as_data', id = id, page = page)
         
-        return r.json()
+        return r.status_code, r.json()
     
     def addSensor(self, data):
         ''' Adds an Alphasense sensor to the network '''
         r = self._postcall('as', data = json.dumps(data))
         
-        return r.json()
+        return r.status_code, r.json()
     
     def editSensor(self, id, data):
         r = self._putcall('ind_as', id = id, data = json.dumps(data))
         
-        return r.json()
+        return r.status_code, r.json()
     
     def dropSensor(self, id):
         ''' Deletes a sensor '''
         r = self._deletecall('ind_as', id = id)
         
-        return r.json()
+        return r.status_code, r.json()
 
     def addASData(self, data):
         ''' Add Alphasense Data '''
         r = self._postcall('add_as', data)
 
-        return r.json()
+        return r.status_code, r.json()
     
     def rhts(self):
         ''' Returns all RHT sensors '''
         r = self._getcall('rht')
         
-        return r.json()
+        return r.status_code, r.json()
     
     def rht(self, id = None):
         ''' Returns information about a single RHT Sensor '''
@@ -187,7 +187,7 @@ class Daqss(object):
         
         r = self._getcall('ind_rht', id = id)
         
-        return r.json()
+        return r.status_code, r.json()
     
     def rhtData(self, id = None, page = 1):
         ''' Gets the data for an individual RHT sensor '''
@@ -196,31 +196,31 @@ class Daqss(object):
             
         r = self._getcall('rht_data', id = id, page = page)
         
-        return r.json()
+        return r.status_code, r.json()
     
     def addRHT(self, data):
         ''' Adds an RHT sensor to the network '''
         r = self._postcall('rht', data = json.dumps(data))
         
-        return r.json()
+        return r.status_code, r.json()
     
     def editRHT(self, id, data):
         ''' Edits an RHT Sensor '''
         r = self._putcall('ind_rht', id = id, data = json.dumps(data))
         
-        return r.json()
+        return r.status_code, r.json()
     
     def dropRHT(self, id):
         ''' Deletes an RHT sensor '''
         r = self._deletecall('ind_rht', id = id)
         
-        return r.json()
+        return r.status_code, r.json()
 
     def addRHTData(self, data):
         ''' Allows us to add a new RHT Data point '''
         r = self._postcall('add_rht', data = data)
 
-        return r.json()
+        return r.status_code, r.json()
     
     def __repr__(self):
         return "Daqss Auth: {0}".format(self.authenticated)
