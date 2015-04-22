@@ -19,9 +19,11 @@ class Daqss(object):
             'as': 'alphasense/',
             'ind_as': 'alphasense/',
             'as_data': 'alphasense/data/',
+            'add_as': 'alphasense/data/',
             'rht': 'rht/',
             'ind_rht': 'rht/',
-            'rht_data': 'rht/data/'
+            'rht_data': 'rht/data/',
+            'add_rht': 'rht/data/'
         }
         
     def _make_endpoint(self, endpoint, **kwargs):
@@ -38,6 +40,9 @@ class Daqss(object):
         if endpoint == 'as_data' or endpoint == 'rht_data':
             return "{0}{1}/{2}{3}/{4}".format(self.base_url, self.api_version, self._endpoints[endpoint], id, page)
         
+        if endpoint == 'add_rht' or endpoint == 'add_as':
+            return "{0}{1}/{2}".format(self.base_url, self.api_version, self._endpoints[endpoint])
+
         return "{0}{1}/{2}".format(self.base_url, self.api_version, self._endpoints[endpoint])
     
     def _getcall(self, endpoint, id = None, page = None):
@@ -165,7 +170,7 @@ class Daqss(object):
 
     def addASData(self, data):
         ''' Add Alphasense Data '''
-        r = self._postcall('as_data', data)
+        r = self._postcall('add_as', data)
 
         return r.json()
     
@@ -213,7 +218,7 @@ class Daqss(object):
 
     def addRHTData(self, data):
         ''' Allows us to add a new RHT Data point '''
-        r = self._postcall('rht_data', data = data)
+        r = self._postcall('add_rht', data = data)
 
         return r.json()
     
