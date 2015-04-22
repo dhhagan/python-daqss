@@ -162,6 +162,12 @@ class Daqss(object):
         r = self._deletecall('ind_as', id = id)
         
         return r.json()
+
+    def addASData(self, data):
+        ''' Add Alphasense Data '''
+        r = self._postcall('as_data', data)
+
+        return r.json()
     
     def rhts(self):
         ''' Returns all RHT sensors '''
@@ -194,6 +200,7 @@ class Daqss(object):
         return r.json()
     
     def editRHT(self, id, data):
+        ''' Edits an RHT Sensor '''
         r = self._putcall('ind_rht', id = id, data = json.dumps(data))
         
         return r.json()
@@ -202,6 +209,12 @@ class Daqss(object):
         ''' Deletes an RHT sensor '''
         r = self._deletecall('ind_rht', id = id)
         
+        return r.json()
+
+    def addRHTData(self, data):
+        ''' Allows us to add a new RHT Data point '''
+        r = self._postcall('rht_data', data = data)
+
         return r.json()
     
     def __repr__(self):
