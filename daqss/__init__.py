@@ -44,7 +44,7 @@ class Daqss(object):
         try:
             req = requests.get(self._make_endpoint(endpoint, id = id, page = page), 
                                auth = (self.apikey, self.apipswd), headers = self._headers)
-        except Exception, e:
+        except Exception as e:
             raise DaqssRequestError(e)
             
         return req
@@ -54,7 +54,7 @@ class Daqss(object):
         try:
             req = requests.post(self._make_endpoint(endpoint, id = id), 
                                auth = (self.apikey, self.apipswd), headers = self._headers, data = data)
-        except Exception, e:
+        except Exception as e:
             raise DaqssRequestError(e)
             
         return req
@@ -64,7 +64,7 @@ class Daqss(object):
         try:
             req = requests.put(self._make_endpoint(endpoint, id = id), 
                                auth = (self.apikey, self.apipswd), headers = self._headers, data = data)
-        except Exception, e:
+        except Exception as e:
             raise DaqssRequestError(e)
             
         return req
@@ -74,7 +74,7 @@ class Daqss(object):
         try:
             req = requests.delete(self._make_endpoint(endpoint, id = id),
                                  auth = (self.apikey, self.apipswd), headers = headers)
-        except Exception, e:
+        except Exception as e:
             raise DaqssRequestError(e)
             
         return req
