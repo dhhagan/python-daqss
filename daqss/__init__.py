@@ -170,7 +170,7 @@ class Daqss(object):
 
     def addASData(self, data):
         ''' Add Alphasense Data '''
-        r = self._postcall('add_as', data)
+        r = self._postcall('add_as', data = json.dumps(data))
 
         return r.status_code, r.json()
     
@@ -218,7 +218,7 @@ class Daqss(object):
 
     def addRHTData(self, data):
         ''' Allows us to add a new RHT Data point '''
-        r = self._postcall('add_rht', data = data)
+        r = self._postcall('add_rht', data = json.dumps(data))
 
         return r.status_code, r.json()
     
