@@ -29,8 +29,16 @@ class Daqss(object):
     def _make_endpoint(self, endpoint, **kwargs):
         id = kwargs.get('id', None)
         page = kwargs.get('page', None)
+        sn = kwargs.get('sn', None)
         
-        if endpoint == 'ind_node' or endpoint == 'ind_as' or endpoint == 'ind_rht':
+        if endpoint == 'ind_node':
+            if sn is None:
+                raise DaqssException("A sn must be supplied.")
+                
+            return "{0}{1}/{2}{3}".format(self.base_url, 
+                                           self.api_version, self._endpoints[endpoint], sn)
+        
+        if endpoint == 'ind_as' or endpoint == 'ind_rht':
             if id is None:
                 raise DaqssException("ID must be set to get an individual node.")
             else:
@@ -45,9 +53,9 @@ class Daqss(object):
 
         return "{0}{1}/{2}".format(self.base_url, self.api_version, self._endpoints[endpoint])
     
-    def _getcall(self, endpoint, id = None, page = None):
+    def _getcall(self, endpoint, id = None, page = None, sn = None):
         try:
-            req = requests.get(self._make_endpoint(endpoint, id = id, page = page), 
+            req = requests.get(self._make_endpoint(endpoint, id = id, page = page, sn = sn), 
                                auth = (self.apikey, self.apipswd), headers = self._headers)
         except Exception as e:
             raise DaqssRequestError(e)
@@ -64,21 +72,21 @@ class Daqss(object):
             
         return req
     
-    def _putcall(self, endpoint, id = None, data = None):
+    def _putcall(self, endpoint, id = None, data = None, sn = None):
         ''' Edits a node in the database '''
         try:
-            req = requests.put(self._make_endpoint(endpoint, id = id), 
+            req = requests.put(self._make_endpoint(endpoint, id = id, sn = sn), 
                                auth = (self.apikey, self.apipswd), headers = self._headers, data = data)
         except Exception as e:
             raise DaqssRequestError(e)
             
         return req
     
-    def _deletecall(self, endpoint, id = None):
+    def _deletecall(self, endpoint, id = None, sn = None):
         ''' Drops a node from the database '''
         try:
-            req = requests.delete(self._make_endpoint(endpoint, id = id),
-                                 auth = (self.apikey, self.apipswd), headers = headers)
+            req = requests.delete(self._make_endpoint(endpoint, id = id, sn = sn),
+                                 auth = (self.apikey, self.apipswd), headers = self._headers)
         except Exception as e:
             raise DaqssRequestError(e)
             
@@ -102,12 +110,12 @@ class Daqss(object):
             
         return r.status_code, r.json()
     
-    def node(self, id = None):
+    def node(self, sn):
         ''' Gets data for an individual node set by id '''
-        if id is None:
-            raise DaqssException("ID is required")
+        if sn is None:
+            raise DaqssException("sn is required")
             
-        r = self._getcall('ind_node', id = id)
+        r = self._getcall('ind_node', sn = sn)
             
         return r.status_code, r.json()
     
@@ -117,13 +125,13 @@ class Daqss(object):
         
         return r.status_code, r.json()
     
-    def editNode(self, id, data):
-        r = self._putcall('ind_node', id = id, data = json.dumps(data))
+    def editNode(self, sn, data):
+        r = self._putcall('ind_node', sn = sn, data = json.dumps(data))
         
         return r.status_code, r.json()
     
-    def dropNode(self, id):
-        r = self._deletecall('ind_node', id = id)
+    def dropNode(self, sn):
+        r = self._deletecall('ind_node', sn = sn)
         
         return r.status_code, r.json()
     

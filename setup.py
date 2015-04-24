@@ -5,7 +5,7 @@
 	April 2015
 
 '''
-__version__ = '0.0.10'
+__version__ = '0.0.11'
 
 import os
 
