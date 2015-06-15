@@ -5,14 +5,9 @@
 	April 2015
 
 '''
-__version__ = '0.0.11'
+__version__ = '0.1.0'
 
-import os
-
-try:
-	from setuptools import setup
-except ImportError:
-	from distutil.core import setup
+from distutil.core import setup
 
 setup(
 	name = 'daqss',
@@ -24,5 +19,14 @@ setup(
 	url = 'https://github.com/dhhagan/python-daqss',
 	license = 'MIT',
 	packages = ['daqss'],
-	zip_safe = False,
-	install_requires = ['requests'])
+	classifiers = [
+		'Development Status :: 1 - alpha',
+		'Operating System :: OS Independent',
+		'Intended Audience :: Science/Research',
+		'Programming Language :: Python :: 3',
+		'Topic :: Software Development',
+		'Topic :: System :: Software',
+		'Topic :: API',
+		'Topic :: Software Development :: Libraries :: Python Modules'
+	]
+)
