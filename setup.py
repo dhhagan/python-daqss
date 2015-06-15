@@ -7,7 +7,7 @@
 '''
 __version__ = '0.1.0'
 
-from distutil.core import setup
+from distutils.core import setup
 
 setup(
 	name = 'daqss',
