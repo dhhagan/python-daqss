@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Python API Wrapper for the Dorchester Air Quality Sensor Study (DAQSS)">
+        <meta name="author" content="David H Hagan">
+        <link rel="canonical" href="https://github.com/dhhagan/python-daqss/">
+        <link rel="shortcut icon" href="./img/favicon.ico">
+
+	<title>python-daqss</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+        <link href="./css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">python-daqss</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="active">
+                    <a href=".">Home</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="api/">API</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="disabled">
+                    <a rel="next" >
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="api/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/dhhagan/python-daqss">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#welcome">Welcome!</a></li>
+        
+            <li><a href="#installation">Installation</a></li>
+        
+            <li><a href="#quickstart">Quickstart</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="welcome">Welcome!</h1>
+<p>Python-daqss is a python module that serves as a wrapper around the API for the Dorchester Air Quality Sensor Study (DAQSS). The module makes it simple to access air quality data for the project. As of summer 2015, there are a total of five sensor nodes deployed in Dorchester, MA.</p>
+<p>Each node continuously measures ozone (O3), nitrogen oxide (NO), nitrogen dioxide (NO2), carbon monoxide (CO), relative humidity (RH), temperature (T), and particulate matter (PM).</p>
+<p>The API is key, password protected; credentials can be obtained by emailing <a href="mailto:dhagan@mit.edu">dhagan@mit.edu</a>.</p>
+<h2 id="installation">Installation</h2>
+<p>You can easily install the python module a couple of different ways:</p>
+<h3 id="git">git</h3>
+<pre><code>&gt;&gt;&gt; git clone https://github.com/dhhagan/python-daqss.git
+&gt;&gt;&gt; cd python-daqss
+&gt;&gt;&gt; python setup.py install
+</code></pre>
+<h3 id="wget">wget</h3>
+<pre><code>&gt;&gt;&gt; wget https://github.com/dhhagan/python-daqss/archive/master.zip
+&gt;&gt;&gt; unzip master.zip
+&gt;&gt;&gt; cd python-daqss/
+&gt;&gt;&gt; sudo python setup.py install
+</code></pre>
+<h2 id="quickstart">Quickstart</h2>
+<p>Once you have obtained credentials and installed the library, you can set up an instance of the <code>Daqqs</code> class:</p>
+<pre><code>import daqss
+api = daqss.Daqss(api_key, api_pswd)
+</code></pre>
+<p>You can check to see if your credentials work by pinging the server which will print <code>True</code> if everything is a go!</p>
+<pre><code>api.ping()
+</code></pre>
+<p>Typically, each call returns a tuple containing the API response status and the response json. An example of a call to get a list of all of the nodes would look something like this:</p>
+<pre><code>status, resp = api.get_nodes()
+</code></pre>
+<p>The entire API wrapper is documented under the <a href="./API">API page</a>!</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+        <script src="./js/base.js"></script>
+    </body>
+</html>
