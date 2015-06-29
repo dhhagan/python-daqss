@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="David H Hagan">
+        <link rel="canonical" href="https://github.com/dhhagan/python-daqss/API/v0-1/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>v0.1 - python-daqss</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">python-daqss</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Home</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li class="active">
+                            <a href="./">v0.1</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../v0-2/">v0.2</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../..">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../v0-2/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/dhhagan/python-daqss">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#daqss-api-v01">DAQSS API v0.1</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="daqss-api-v01">DAQSS API v0.1</h1>
+<p><em>class</em> <strong>daqss.Daqss</strong>(apikey, apipswd, version = 'v1.0')</p>
+<blockquote>
+<blockquote>
+<p>Arguments
+<ul class='list-unstyled'>
+<li><strong>apikey</strong>: API Key</li>
+<li><strong>apipswd</strong>: API password/secret</li>
+<li><strong>version</strong>: API version. Currently at v1.0</li>
+</ul>
+<div class='col-lg-offset-1'>
+  <code>api = daqss.Daqss(apikey = 'A123', apipswd = 'A321', version = 'v1.0')</code>
+</div></p>
+</blockquote>
+<p><strong>ping</strong>()</p>
+<blockquote>
+<p>Description
+<ul class='list-unstyled'>
+<li>returns <em>true</em> if the authentication credentials check out</li>
+</ul></p>
+</blockquote>
+</blockquote>
+<pre><code>api.ping()
+</code></pre>
+<blockquote>
+<p><strong>get_nodes</strong>()</p>
+<blockquote>
+<p>Description
+<ul class='list-unstyled'>
+<li>returns a list of all nodes</li>
+</ul></p>
+<p>Node Attributes
+<ul class='list-unstyled'>
+<li><strong>apikey</strong>: API Key</li>
+</ul></p>
+</blockquote>
+</blockquote>
+<pre><code>api.get_nodes()
+</code></pre>
+<blockquote>
+<p><strong>get_node</strong>(sn)</p>
+<blockquote>
+<p>Description
+<ul class='list-unstyled'>
+<li>returns a single node as defined by it's serial number</li>
+</ul></p>
+<p>Node Attributes
+<ul class='list-unstyled'>
+<li><strong>apikey</strong>: API Key</li>
+</ul></p>
+</blockquote>
+</blockquote>
+<pre><code>api.get_node('A123')
+</code></pre>
+<blockquote>
+<p><strong>get_alphasense_sensors</strong>()</p>
+<blockquote>
+<p>Description
+<ul class='list-unstyled'>
+<li>returns all alphasense sensors</li>
+</ul></p>
+<p>Node Attributes
+<ul class='list-unstyled'>
+<li><strong>apikey</strong>: API Key</li>
+</ul></p>
+</blockquote>
+</blockquote>
+<pre><code>api.get_alphasense_sensors()
+</code></pre>
+<blockquote>
+<p><strong>get_alphasense_sensor</strong>(id = None)</p>
+<blockquote>
+<p>Description
+<ul class='list-unstyled'>
+<li>returns a single alphasense sensor as defined by it's id</li>
+</ul></p>
+<p>Node Attributes
+<ul class='list-unstyled'>
+<li><strong>apikey</strong>: API Key</li>
+</ul></p>
+</blockquote>
+</blockquote>
+<pre><code>api.get_alphasense_sensor('123')
+</code></pre>
+<blockquote>
+<p><strong>get_alphasense_data</strong>(sn, basedate = None, enddate = None, period = None)</p>
+<blockquote>
+<p>Arguments
+<ul class='list-unstyled'>
+<li><strong>sn</strong>: serial number of the alphasense sensor</li>
+<li><strong>basedate</strong>: the beginning date for the data you want in the format <strong>YYYY-MM-DD</strong></li>
+<li><strong>enddate</strong>: the ending date for the data you want in the format <strong>YYYY-MM-DD</strong></li>
+<li><strong>period</strong>: length of time you want data for. ex. '1w', '2d', '3m', '1y'</li>
+</ul></p>
+<p>Description
+<ul class='list-unstyled'>
+<li>returns the data for a given alphasense sensor as identified by it's serial number</li>
+<li><strong>Note:</strong> Only the period OR enddate must be specified, not both</li>
+</ul></p>
+<p>Node Attributes
+<ul class='list-unstyled'>
+<li><strong>apikey</strong>: API Key</li>
+</ul></p>
+</blockquote>
+</blockquote>
+<pre><code>api.get_alphasense_data('A123', basedate = '2015-01-01', period = '1w')
+api.get_alphasense_data('A123', basedate = '2015-01-01', enddate = '2015-05-01')
+</code></pre>
+<blockquote>
+<p><strong>get_rhts</strong>()</p>
+<blockquote>
+<p>Description
+<ul class='list-unstyled'>
+<li>returns all rht sensors</li>
+</ul></p>
+</blockquote>
+</blockquote>
+<pre><code>api.get_rhts()
+</code></pre>
+<blockquote>
+<p><strong>get_rht</strong>(id)</p>
+<blockquote>
+<p>Description
+<ul class='list-unstyled'>
+<li>returns a single rht sensor as defined by it's id</li>
+</ul></p>
+</blockquote>
+</blockquote>
+<pre><code>api.get_rht('123')
+</code></pre>
+<blockquote>
+<p><strong>get_rht_data</strong>(sn, basedate = None, enddate = None, period = None)</p>
+<blockquote>
+<p>Arguments
+<ul class='list-unstyled'>
+<li><strong>sn</strong>: serial number of the rht sensor</li>
+<li><strong>basedate</strong>: the beginning date for the data you want in the format <strong>YYYY-MM-DD</strong></li>
+<li><strong>enddate</strong>: the ending date for the data you want in the format <strong>YYYY-MM-DD</strong></li>
+<li><strong>period</strong>: length of time you want data for. ex. '1w', '2d', '3m', '1y'</li>
+</ul></p>
+<p>Description
+<ul class='list-unstyled'>
+<li>returns the data for a given rht sensor as identified by it's serial number</li>
+<li><strong>Note:</strong> Only the period OR enddate must be specified, not both</li>
+</ul></p>
+<p>Node Attributes
+<ul class='list-unstyled'>
+<li><strong>apikey</strong>: API Key</li>
+</ul></p>
+</blockquote>
+</blockquote>
+<pre><code>api.get_rht_data('A123', basedate = '2015-01-01', period = '1w')
+api.get_rht_data('A123', basedate = '2015-01-01', enddate = '2015-05-01')
+</code></pre>
+<blockquote>
+<p><strong>get_opc</strong>(sn = None)</p>
+<blockquote>
+<p>Description
+<ul class='list-unstyled'>
+<li>returns a single OPC as defined by it's serial number</li>
+</ul></p>
+</blockquote>
+</blockquote>
+<pre><code>api.get_opc('A123')
+</code></pre>
+<blockquote>
+<p><strong>get_opc_data</strong>(sn, basedate = None, enddate = None, period = None)</p>
+<blockquote>
+<p>Arguments
+<ul class='list-unstyled'>
+<li><strong>sn</strong>: serial number of the OPC</li>
+<li><strong>basedate</strong>: the beginning date for the data you want in the format <strong>YYYY-MM-DD</strong></li>
+<li><strong>enddate</strong>: the ending date for the data you want in the format <strong>YYYY-MM-DD</strong></li>
+<li><strong>period</strong>: length of time you want data for. ex. '1w', '2d', '3m', '1y'</li>
+</ul></p>
+<p>Description
+<ul class='list-unstyled'>
+<li>returns the data for a given OPC as identified by it's serial number</li>
+<li><strong>Note:</strong> Only the period OR enddate must be specified, not both</li>
+</ul></p>
+</blockquote>
+</blockquote>
+<pre><code>api.get_opc_data('A123', basedate = '2015-01-01', period = '1w')
+api.get_opc_data('A123', basedate = '2015-01-01', enddate = '2015-05-01')
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>
