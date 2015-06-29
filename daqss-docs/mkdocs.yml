@@ -1,0 +1,12 @@
+site_name: python-daqss
+site_url: https://github.com/dhhagan/python-daqss
+repo_url: https://github.com/dhhagan/python-daqss
+repo_name: GitHub
+site_description: Python API Wrapper for the Dorchester Air Quality Sensor Study (DAQSS)
+site_author: David H Hagan
+pages:
+  - Home: index.md
+  - API:
+    - 'v0.1': 'API/v0-1.md'
+    - 'v0.2': 'API/v0-2.md'
+theme: spacelab
